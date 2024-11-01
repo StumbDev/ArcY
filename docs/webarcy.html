@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebArcy Language Documentation</title>
+    <link rel="stylesheet" href="dist/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo.svg" alt="WebArcy Logo" class="logo">
+            <h1>WebArcy</h1>
+        </div>
+        
+        <div class="nav-sections">
+            <div class="nav-group">
+                <h3>Language Basics</h3>
+                <a href="#overview" class="nav-link">Overview</a>
+                <a href="#syntax" class="nav-link">Basic Syntax</a>
+                <a href="#directives" class="nav-link">Directives</a>
+            </div>
+            
+            <div class="nav-group">
+                <h3>Components</h3>
+                <a href="#components" class="nav-link">Component System</a>
+                <a href="#props" class="nav-link">Props & State</a>
+                <a href="#lifecycle" class="nav-link">Lifecycle</a>
+            </div>
+            
+            <div class="nav-group">
+                <h3>Styling</h3>
+                <a href="#styling" class="nav-link">Styling System</a>
+                <a href="#themes" class="nav-link">Theming</a>
+                <a href="#responsive" class="nav-link">Responsive Design</a>
+            </div>
+            
+            <div class="nav-group">
+                <h3>Advanced</h3>
+                <a href="#compilation" class="nav-link">Compilation</a>
+                <a href="#optimization" class="nav-link">Optimization</a>
+                <a href="#tooling" class="nav-link">Tooling</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="content">
+        <section id="overview" class="doc-section">
+            <h1>WebArcy Language</h1>
+            <p class="lead">
+                A modern, declarative language for building web applications with simplicity and power.
+            </p>
+
+            <div class="code-example">
+                <pre><code class="language-webarcy">// Basic WebArcy example
+@page Home {
+    @title "Welcome to WebArcy"
+    @meta description="A modern web framework"
+    
+    @component Header {
+        @style {
+            bg: linear-gradient(45deg, #6649b8, #4a3b8b)
+            padding: 2rem
+            text-align: center
+        }
+        
+        @h1 { @title }
+        @p { "Build beautiful web apps with ease" }
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="syntax" class="doc-section">
+            <h2>Basic Syntax</h2>
+            <p>WebArcy uses a clean, intuitive syntax with directives marked by @ symbols.</p>
+
+            <div class="syntax-grid">
+                <div class="syntax-card">
+                    <h3>Directives</h3>
+                    <div class="code-example">
+                        <pre><code class="language-webarcy">@page
+@component
+@style
+@if
+@foreach</code></pre>
+                    </div>
+                </div>
+
+                <div class="syntax-card">
+                    <h3>Properties</h3>
+                    <div class="code-example">
+                        <pre><code class="language-webarcy">@title: "Page Title"
+@meta description="Description"
+@prop items: ["a", "b", "c"]</code></pre>
+                    </div>
+                </div>
+
+                <div class="syntax-card">
+                    <h3>Control Flow</h3>
+                    <div class="code-example">
+                        <pre><code class="language-webarcy">@if condition {
+    // content
+}
+
+@foreach item in items {
+    // content
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="components" class="doc-section">
+            <h2>Component System</h2>
+            <p>WebArcy's component system allows you to build reusable UI elements with encapsulated styles and logic.</p>
+
+            <div class="code-example">
+                <pre><code class="language-webarcy">@component Button {
+    @prop type: "primary"
+    @prop onClick: () => {}
+    
+    @style {
+        bg: var(--button-${@type}-bg)
+        color: white
+        padding: 0.5rem 1rem
+        border-radius: 4px
+        cursor: pointer
+    }
+    
+    @onClick { @prop.onClick() }
+    
+    slot // Content goes here
+}</code></pre>
+            </div>
+
+            <div class="usage-example">
+                <h3>Usage Example</h3>
+                <div class="code-example">
+                    <pre><code class="language-webarcy">@component Header {
+    @Button type="primary" {
+        "Click Me"
+        @onClick { alert("Hello!") }
+    }
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="styling" class="doc-section">
+            <h2>Styling System</h2>
+            <p>WebArcy provides a powerful, scoped styling system with CSS-like syntax.</p>
+
+            <div class="style-examples">
+                <div class="style-card">
+                    <h3>Basic Styling</h3>
+                    <div class="code-example">
+                        <pre><code class="language-webarcy">@style {
+    color: #333
+    font-size: 16px
+    margin: 1rem
+    
+    &:hover {
+        color: #666
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="style-card">
+                    <h3>Variables & Themes</h3>
+                    <div class="code-example">
+                        <pre><code class="language-webarcy">@theme {
+    --primary-color: #6649b8
+    --text-color: #333
+}
+
+@style {
+    color: var(--text-color)
+    bg: var(--primary-color)
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="tooling" class="doc-section">
+            <h2>Development Tools</h2>
+            <p>WebArcy comes with a rich set of development tools and integrations.</p>
+
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>VS Code Extension</h3>
+                    <p>Syntax highlighting, snippets, and IntelliSense for WebArcy files.</p>
+                    <div class="code-example">
+                        <pre><code class="language-bash">code --install-extension webarcy-syntax</code></pre>
+                    </div>
+                </div>
+
+                <div class="tool-card">
+                    <h3>CLI Tools</h3>
+                    <p>Command-line tools for building and optimizing WebArcy applications.</p>
+                    <div class="code-example">
+                        <pre><code class="language-bash">webarcy build
+webarcy optimize
+webarcy serve</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <button class="theme-switcher" id="theme-toggle">
+            <span class="icon">🌙</span>
+            <span class="text">Dark Mode</span>
+        </button>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="dist/js/main.js"></script>
+</body>
+</html> 

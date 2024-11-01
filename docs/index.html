@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcy Documentation</title>
+    <link rel="stylesheet" href="dist/styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo.svg" alt="Arcy Logo" class="logo">
+            <h1>Arcy</h1>
+        </div>
+        
+        <div class="nav-sections">
+            <div class="nav-group">
+                <h3>Getting Started</h3>
+                <a href="#introduction" class="nav-link">Introduction</a>
+                <a href="#installation" class="nav-link">Installation</a>
+                <a href="#quick-start" class="nav-link">Quick Start</a>
+            </div>
+            
+            <div class="nav-group">
+                <h3>Web Browser</h3>
+                <a href="#browser-features" class="nav-link">Features</a>
+                <a href="#browser-usage" class="nav-link">Usage</a>
+                <a href="#browser-api" class="nav-link">API</a>
+            </div>
+            
+            <div class="nav-group">
+                <h3>CLI</h3>
+                <a href="#cli-overview" class="nav-link">Overview</a>
+                <a href="#cli-commands" class="nav-link">Commands</a>
+                <a href="#cli-scripting" class="nav-link">Scripting</a>
+            </div>
+            
+            <div class="nav-group">
+                <h3>WebArcy</h3>
+                <a href="#webarcy-intro" class="nav-link">Introduction</a>
+                <a href="#webarcy-syntax" class="nav-link">Syntax</a>
+                <a href="#webarcy-components" class="nav-link">Components</a>
+                <a href="#webarcy-styling" class="nav-link">Styling</a>
+                <a href="/webarcy" class="nav-link external">Full Documentation →</a>
+            </div>
+        </div>
+        
+        <div class="sidebar-footer">
+            <a href="https://github.com/yourusername/arcy" target="_blank" class="github-link">
+                GitHub Repository
+            </a>
+        </div>
+    </nav>
+
+    <main class="content">
+        <div class="search-container">
+            <input type="text" placeholder="Search documentation..." id="search">
+        </div>
+
+        <section id="introduction" class="doc-section">
+            <h1>Arcy Documentation</h1>
+            <p class="lead">
+                A modern web browser, CLI tool, and scripting language for web development.
+            </p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Web Browser</h3>
+                    <p>A lightweight, customizable web browser with developer tools.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>CLI Tool</h3>
+                    <p>Powerful command-line interface for web development tasks.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>WebArcy Language</h3>
+                    <p>Simple yet powerful language for building web applications.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="installation" class="doc-section">
+            <h2>Installation</h2>
+            <p>Get started with Arcy by following these installation steps:</p>
+            
+            <div class="installation-steps">
+                <div class="step-card">
+                    <h3>1. Clone the Repository</h3>
+                    <div class="code-example">
+                        <pre><code class="language-bash">git clone https://github.com/yourusername/arcy.git
+cd arcy</code></pre>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <h3>2. Install Dependencies</h3>
+                    <div class="code-example">
+                        <pre><code class="language-bash">yarn install</code></pre>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <h3>3. Build the Project</h3>
+                    <div class="code-example">
+                        <pre><code class="language-bash">yarn build</code></pre>
+                    </div>
+                </div>
+                
+                <div class="step-card">
+                    <h3>4. Start Arcy</h3>
+                    <div class="code-example">
+                        <pre><code class="language-bash">yarn start</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="requirements">
+                <h3>System Requirements</h3>
+                <ul>
+                    <li>Node.js 16 or higher</li>
+                    <li>Yarn package manager</li>
+                    <li>Git</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contributing" class="doc-section">
+            <h2>Contributing</h2>
+            <p>We welcome contributions to Arcy! Here's how you can help:</p>
+            
+            <div class="contribution-types">
+                <div class="contribution-card">
+                    <h3>🐛 Bug Reports</h3>
+                    <p>Found a bug? Please open an issue with:</p>
+                    <ul>
+                        <li>Clear description of the issue</li>
+                        <li>Steps to reproduce</li>
+                        <li>Expected vs actual behavior</li>
+                        <li>System information</li>
+                    </ul>
+                </div>
+                
+                <div class="contribution-card">
+                    <h3>💡 Feature Requests</h3>
+                    <p>Have an idea? Share it with us:</p>
+                    <ul>
+                        <li>Detailed description of the feature</li>
+                        <li>Use cases and benefits</li>
+                        <li>Potential implementation approach</li>
+                    </ul>
+                </div>
+                
+                <div class="contribution-card">
+                    <h3>🔧 Pull Requests</h3>
+                    <p>Want to contribute code? Follow these steps:</p>
+                    <ol>
+                        <li>Fork the repository</li>
+                        <li>Create a feature branch</li>
+                        <li>Make your changes</li>
+                        <li>Write tests if applicable</li>
+                        <li>Submit a pull request</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="development-setup">
+                <h3>Development Setup</h3>
+                <div class="code-example">
+                    <pre><code class="language-bash"># Fork and clone your repository
+git clone https://github.com/your-username/arcy.git
+cd arcy
+
+# Create a new branch
+git checkout -b feature/your-feature-name
+
+# Install dependencies
+yarn install
+
+# Start development server
+yarn dev</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <button class="theme-switcher" id="theme-toggle">
+            <span class="icon">🌙</span>
+            <span class="text">Dark Mode</span>
+        </button>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script src="dist/js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,116 @@
+{
+    "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+    "name": "WebArcy",
+    "patterns": [
+        {
+            "include": "#keywords"
+        },
+        {
+            "include": "#strings"
+        },
+        {
+            "include": "#directives"
+        },
+        {
+            "include": "#comments"
+        },
+        {
+            "include": "#style-blocks"
+        }
+    ],
+    "repository": {
+        "keywords": {
+            "patterns": [{
+                "name": "keyword.control.webarcy",
+                "match": "\\b(if|else|foreach|in|return|import)\\b"
+            }]
+        },
+        "directives": {
+            "patterns": [{
+                "name": "entity.name.tag.webarcy",
+                "match": "@(page|component|style|title|meta|button|section|foreach|if|else|onClick|import|form|input|textarea|h1|h2|h3|card|badge)\\b"
+            }]
+        },
+        "strings": {
+            "patterns": [
+                {
+                    "name": "string.quoted.double.webarcy",
+                    "begin": "\"",
+                    "end": "\"",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.webarcy",
+                            "match": "\\\\."
+                        }
+                    ]
+                },
+                {
+                    "name": "string.quoted.single.webarcy",
+                    "begin": "'",
+                    "end": "'",
+                    "patterns": [
+                        {
+                            "name": "constant.character.escape.webarcy",
+                            "match": "\\\\."
+                        }
+                    ]
+                }
+            ]
+        },
+        "comments": {
+            "patterns": [
+                {
+                    "name": "comment.line.double-slash.webarcy",
+                    "match": "//.*$"
+                },
+                {
+                    "name": "comment.block.webarcy",
+                    "begin": "/\\*",
+                    "end": "\\*/",
+                    "patterns": [
+                        {
+                            "name": "comment.block.documentation.webarcy",
+                            "match": "@(param|returns|description)\\b"
+                        }
+                    ]
+                }
+            ]
+        },
+        "style-blocks": {
+            "patterns": [
+                {
+                    "begin": "(@style)\\s*\\{",
+                    "end": "\\}",
+                    "beginCaptures": {
+                        "1": {
+                            "name": "entity.name.tag.webarcy"
+                        }
+                    },
+                    "patterns": [
+                        {
+                            "match": "\\b([a-zA-Z-]+)\\s*:",
+                            "captures": {
+                                "1": {
+                                    "name": "support.type.property-name.css"
+                                }
+                            }
+                        },
+                        {
+                            "match": ":\\s*(.+)$",
+                            "captures": {
+                                "1": {
+                                    "name": "support.constant.property-value.css"
+                                }
+                            }
+                        },
+                        {
+                            "match": "#[0-9a-fA-F]{3,6}",
+                            "name": "constant.other.color.rgb-value"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "scopeName": "source.webarcy"
+} 

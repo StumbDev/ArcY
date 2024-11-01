@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arcy MiniWeb</title>
+    <link rel="stylesheet" href="/build/css/dist.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-tabs">
+            <!-- Tab items will be dynamically added here -->
+            <div class="tab active">
+                <img src="https://favicon.ico" alt="favicon" class="tab-favicon">
+                <span class="tab-title">New Tab</span>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <button class="nav-button" id="newTab">+</button>
+            <button class="nav-button" id="settings">⚙️</button>
+        </div>
+    </nav>
+
+    <main>
+        <div class="commandbar">
+            <button class="nav-action-btn">←</button>
+            <button class="nav-action-btn">→</button>
+            <input type="text" class="url-input" placeholder="Search or enter URL">
+            <button class="enterBtn">Go</button>
+        </div>
+        
+        <div class="browser-content">
+            <!-- Browser content will be loaded here -->
+        </div>
+    </main>
+</body>
+</html>

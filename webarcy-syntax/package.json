@@ -1,0 +1,25 @@
+{
+    "name": "webarcy-syntax",
+    "displayName": "WebArcy Language Support",
+    "description": "Syntax highlighting for WebArcy files",
+    "version": "0.1.0",
+    "engines": {
+        "vscode": "^1.60.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "webarcy",
+            "aliases": ["WebArcy", "webarcy"],
+            "extensions": [".warcy"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "webarcy",
+            "scopeName": "source.webarcy",
+            "path": "./syntaxes/webarcy.tmLanguage.json"
+        }]
+    }
+} 

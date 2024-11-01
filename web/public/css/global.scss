@@ -1,17 +1,76 @@
-$background-main: #181425;
-$textcolor-main: #fff;
-$mainfont: 'Open Sans';
+$colors: (
+    'background': (
+        'main': #181425,
+        'secondary': #1e1e24,
+        'overlay': rgba(24, 20, 37, 0.95)
+    ),
+    'accent': (
+        'primary': #6649b8,
+        'hover': #7859c9
+    ),
+    'text': (
+        'primary': #b6b6b6,
+        'secondary': #ececee
+    )
+);
 
+$spacing: (
+    'xs': 0.25rem,
+    'sm': 0.5rem,
+    'md': 1rem,
+    'lg': 1.5rem
+);
+
+$layout: (
+    'nav-width': 4.5rem,
+    'command-max-width': 600px
+);
+
+$nav-width: 4.5rem;
+$mainfont: 'Open Sans', sans-serif;
+
+// Mixins
+@mixin glass-effect {
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@mixin interactive {
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+// Root styles
 :root {
-    background: $background-main;
-    color: $textcolor-main;
-    font-family: $mainfont;
-    margin: 0 auto;
+    background: map-get($colors, 'background', 'main');
+    color: map-get($colors, 'text', 'primary');
+    font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    --text-primary: #b6b6b6;
-    --text-secondary: #ececee;
-    --bg-primary: $background-main;
-    --bg-secondary: ;
+    
+    // CSS Variables
+    --text-primary: #{map-get($colors, 'text', 'primary')};
+    --text-secondary: #{map-get($colors, 'text', 'secondary')};
+    --bg-primary: #{map-get($colors, 'background', 'main')};
+}
+
+// ... rest of your existing styles with these improvements ...
+
+.commandbar {
+    @include glass-effect;
+    background: rgba(53, 22, 136, 0.95);
+    border-radius: 12px;
+    margin: map-get($spacing, 'md') auto;
+    padding: 0.75rem map-get($spacing, 'md');
+    max-width: map-get($layout, 'command-max-width');
+    display: flex;
+    align-items: center;
+    gap: map-get($spacing, 'sm');
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -31,27 +90,154 @@ body {
 }
 
 main {
-    margin-left: 5rem;
+    margin-left: map-get($layout, 'nav-width');
     padding: 1rem;
+    height: 100vh;
+    overflow-y: auto;
 }
 
-
-// make that later
 .navbar {
-    width: 5rem;
+    width: $nav-width;
     height: 100vh;
     position: fixed;
-    background-color: var(--bg-primary);
+    background-color: rgba(24, 20, 37, 0.95);
+    backdrop-filter: blur(8px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem 0;
+    z-index: 100;
 }
 
-.commandbar {
-    background: #351688;
-    border-radius: 12rem;
-    color: #b6b6b6;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-    margin: 10 auto;
+.nav-tabs {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.tab {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    color: var(--text-primary);
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    &.active {
+        background: rgba(102, 73, 184, 0.2);
+        color: var(--text-secondary);
+    }
+}
+
+.tab-favicon {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+}
+
+.tab-title {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem;
+}
+
+.nav-button {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-secondary);
+    }
 }
 
 .enterBtn {
-    // make this later
+    background: #6649b8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-family: $mainfont;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    &:hover {
+        background: #7859c9;
+    }
+    
+    &:active {
+        transform: translateY(1px);
+    }
+}
+
+.url-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: var(--text-secondary);
+    font-family: $mainfont;
+    
+    &:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+    }
+    
+    &::placeholder {
+        color: var(--text-primary);
+    }
+}
+
+.nav-action-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    
+    &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--text-secondary);
+    }
+    
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.browser-content {
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    min-height: calc(100vh - 130px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }

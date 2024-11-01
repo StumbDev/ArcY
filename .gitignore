@@ -2,3 +2,11 @@
 /dist
 /build/bin
 /build
+.DS_Store
+/docs/node_modules
+/docs/build
+/docs/dist
+/webarcy-syntax/node_modules
+/webarcy-syntax/build
+/webarcy-syntax/dist
+/webarcy-syntax/*.vsix

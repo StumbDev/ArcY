@@ -1,0 +1,73 @@
+@page Home {
+    @title "My Amazing Website"
+    @meta description="A website built with WebArcy"
+    @meta keywords="webarcy, web development"
+    
+    @import "./components/Header"
+    
+    @component Hero {
+        @style {
+            bg: linear-gradient(45deg, #ff6b6b, #4ecdc4)
+            padding: 60px
+            text-align: center
+        }
+        
+        @h1 { "Welcome to " + @title }
+        
+        @button primary {
+            "Get Started"
+            @onClick { navigateTo('/start') }
+        }
+    }
+    
+    @section features {
+        @style {
+            display: grid
+            grid-template-columns: repeat(3, 1fr)
+            gap: 20px
+            padding: 40px
+        }
+        
+        @foreach feature in features {
+            @card {
+                @icon: feature.icon
+                @title: feature.title
+                @content: feature.description
+                
+                @if feature.isPremium {
+                    @badge premium { "Premium" }
+                }
+            }
+        }
+    }
+    
+    @component ContactForm {
+        @style {
+            max-width: 500px
+            margin: 0 auto
+            padding: 20px
+        }
+        
+        @form {
+            @input text "name" {
+                label: "Your Name"
+                required: true
+            }
+            
+            @input email "email" {
+                label: "Email Address"
+                required: true
+            }
+            
+            @textarea "message" {
+                label: "Your Message"
+                rows: 4
+            }
+            
+            @button submit {
+                "Send Message"
+                @onClick { submitForm() }
+            }
+        }
+    }
+} 

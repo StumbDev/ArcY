@@ -1,0 +1,98 @@
+// Additional styles for WebArcy documentation
+.syntax-grid, .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    margin: 32px 0;
+}
+
+.syntax-card, .tool-card {
+    @include card;
+    
+    h3 {
+        color: $primary-color;
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+}
+
+.style-examples {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 24px;
+    margin: 32px 0;
+}
+
+.style-card {
+    @include card;
+    
+    h3 {
+        color: $primary-color;
+        margin-top: 0;
+    }
+    
+    .code-example {
+        margin: 16px 0 0 0;
+    }
+}
+
+.usage-example {
+    margin-top: 32px;
+    padding: 24px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    
+    h3 {
+        margin-top: 0;
+        color: $primary-color;
+    }
+    
+    .code-example {
+        margin: 16px 0 0 0;
+    }
+}
+
+// Language-specific syntax highlighting
+.language-webarcy {
+    .directive {
+        color: #c678dd;
+    }
+    
+    .property {
+        color: #61afef;
+    }
+    
+    .string {
+        color: #98c379;
+    }
+    
+    .comment {
+        color: #5c6370;
+        font-style: italic;
+    }
+}
+
+// Add a custom scrollbar for code blocks
+.code-example {
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    }
+} 

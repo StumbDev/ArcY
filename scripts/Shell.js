@@ -2,7 +2,15 @@ import readline from 'readline';
 import chalk from 'chalk';
 import axios from 'axios';
 import ts from 'typescript';
+import { parse as parseHTML } from 'node-html-parser';
+import postcss from 'postcss';
+import cssnano from 'cssnano';
+import autoprefixer from 'autoprefixer';
+import { JSDOM } from 'jsdom';
+import prettier from 'prettier';
 import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
 
 export { shell as default}
 // Mock interpreter function to handle Arcy commands
@@ -30,6 +38,38 @@ function shell() {
                 return showHelp();
             case 'exit':
                 return null; // Indicates the user wants to exit
+            case 'run-script':
+                return runScript(args[0]);
+            case 'js-eval':
+                return jsEval(args.join(' '));
+            case 'file-read':
+                return readFile(args[0]);
+            case 'file-write':
+                return writeFile(args[0], args.slice(1).join(' '));
+            case 'execute':
+                return executeCommand(args.join(' '));
+            case 'list-dir':
+                return listDirectory(args[0] || '.');
+            case 'watch-file':
+                return watchFile(args[0]);
+            case 'parse-html':
+                return parseHTMLFile(args[0]);
+            case 'minify-css':
+                return minifyCSS(args[0]);
+            case 'prefix-css':
+                return prefixCSS(args[0]);
+            case 'validate-html':
+                return validateHTML(args[0]);
+            case 'extract-links':
+                return extractLinks(args[0]);
+            case 'format-html':
+                return formatHTML(args[0]);
+            case 'css-stats':
+                return analyzeCSSStats(args[0]);
+            case 'html-to-jsx':
+                return convertHTMLtoJSX(args[0]);
+            case 'create-component':
+                return createReactComponent(args[0], args[1]);
             default:
                 return chalk.red(`Unknown command: ${command}`);
         }
@@ -100,9 +140,25 @@ function shell() {
       ${chalk.cyan('ts-compile <file.ts>')}  - Compiles a TypeScript file to JavaScript.
       ${chalk.cyan('ts-eval <expression>')}  - Evaluates a TypeScript expression in the shell.
     
-    ${chalk.greenBright('Usage Example:')}
-      ${chalk.white('Type')} ${chalk.cyan('http-get https://jsonplaceholder.typicode.com/todos/1')}
-      ${chalk.white('or')} ${chalk.cyan('ts-eval let num: number = 42; num * 2;')}
+    ${chalk.yellowBright('Scripting Commands:')}
+      ${chalk.cyan('run-script <path>')}     - Runs a JavaScript file.
+      ${chalk.cyan('js-eval <code>')}        - Evaluates JavaScript code.
+      ${chalk.cyan('file-read <path>')}      - Reads and displays file contents.
+      ${chalk.cyan('file-write <path> <content>')} - Writes content to a file.
+      ${chalk.cyan('execute <command>')}     - Executes a shell command.
+      ${chalk.cyan('list-dir [path]')}       - Lists contents of a directory.
+      ${chalk.cyan('watch-file <path>')}     - Watches a file for changes.
+    
+    ${chalk.yellowBright('HTML/CSS Commands:')}
+      ${chalk.cyan('parse-html <file>')}      - Analyzes HTML file structure
+      ${chalk.cyan('minify-css <file>')}      - Minifies CSS file
+      ${chalk.cyan('prefix-css <file>')}      - Adds vendor prefixes to CSS
+      ${chalk.cyan('validate-html <file>')}   - Validates HTML structure
+      ${chalk.cyan('extract-links <file>')}   - Extracts all links from HTML
+      ${chalk.cyan('format-html <file>')}     - Formats HTML file
+      ${chalk.cyan('css-stats <file>')}       - Analyzes CSS statistics
+      ${chalk.cyan('html-to-jsx <file>')}     - Converts HTML to JSX
+      ${chalk.cyan('create-component <name>')} - Creates React component
     
     ${chalk.magentaBright('Enjoy using ArcyShell!')}
     `;
