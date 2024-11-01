@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background-main: 24 20 37;
+    --background-secondary: 30 30 36;
+    --accent-primary: 102 73 184;
+    --accent-hover: 120 89 201;
+    --text-primary: 182 182 182;
+    --text-secondary: 236 236 238;
+  }
+}
+
+@layer components {
+  .nav-button {
+    @apply p-2 rounded-lg text-text-primary hover:text-text-secondary
+           hover:bg-white/10 disabled:opacity-50 disabled:cursor-not-allowed
+           transition-colors;
+  }
+
+  .sidebar-button {
+    @apply p-2 rounded-lg text-text-primary hover:text-text-secondary
+           hover:bg-white/10 transition-colors;
+  }
+}
+
+.cmdk-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+}
+
+.cmdk-dialog {
+  max-width: 640px;
+  width: 100%;
+  background-color: rgb(var(--background-secondary));
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 16px 70px rgb(0 0 0 / 20%);
+} 

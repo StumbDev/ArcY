@@ -1,6 +1,6 @@
 import { JSDOM } from 'jsdom';
-import node:fs from 'node:fs';
-import node:path from 'node:path';
+import fs from 'node:fs';
+import path from 'node:path';
 import prettier from 'prettier';
 import postcss from 'postcss';
 import cssnano from 'cssnano';
